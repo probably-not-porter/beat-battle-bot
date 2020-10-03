@@ -18,6 +18,8 @@ const filter_words = ["heck", "shoot", "darn"];
 // channels
 const rules_channel_id = '762006773959491607'; // channel for ONLY rules agreement
 const help_channel_id = '762007808307757056'; // channel for help info
+const sample_channel_id = '762006891852595231'; // channel for sample talk
+const battle_channel_id = '762006990728986646'; // channel for beat battles
 
 // roles
 const user_role_id = '762033142504095774'; // role for basic user
@@ -48,6 +50,9 @@ bot.on('message', message => {  // check for commands being run
 
     if (command === 'ping'){
         bot.commands.get('ping').execute(message, args);
+    }
+    if (command === 'startbattle'){
+        bot.commands.get('startbattle').execute(battle_channel_id, sample_channel_id, message, args);
     }
 });
 

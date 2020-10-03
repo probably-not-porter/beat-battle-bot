@@ -9,16 +9,25 @@ module.exports = {
             help_channel.bulkDelete(3);
         
             help_channel.send({ embed: new Discord.MessageEmbed() // create rules embed
-                .setColor('#0099ff')
-                .setTitle('XRP Discord')
-                .setURL('https://discord.js.org/')
-                .setDescription('Some description here')
+                .setColor('#00ee00')
+                .setTitle('Beat Battle Help')
+                .setDescription('Commands and help for participating in Beat Battles')
                 .setThumbnail('https://i.imgur.com/wSTFkRM.png')
                 .addFields(
-                    { name: 'Rules', value: '1. first rule\n 2. second rule' },
+                    { 
+                        name: 'Selecting Samples', 
+                        value: 'Use the `samples` text channel to discuss and select samples.\n Use `!startbattle [url]` to start a beat battle with a specific sample.\n A battle will be started in the `battle` text channel where the sample can be found and entries can be submitted.' 
+                    },
+                    { 
+                        name: 'Submitting Entries', 
+                        value: 'Use the `samples` text channel to discuss and select samples.\n Use `!startbattle [url]` to start a beat battle with a specific sample.\n A battle will be started in the `battle` text channel where the sample can be found and entries can be submitted.' 
+                    },
+                    { 
+                        name: 'Voting on beats', 
+                        value: 'Use the `samples` text channel to discuss and select samples.\n Use `!startbattle [url]` to start a beat battle with a specific sample.\n A battle will be started in the `battle` text channel where the sample can be found and entries can be submitted.' 
+                    },
                 )
-                .addField('Inline field title', 'Some value here', true)
-                .setFooter('React with ✅ to agree to the rules', 'https://i.imgur.com/wSTFkRM.png')
+                .setFooter('Have fun and jam on', 'https://i.imgur.com/wSTFkRM.png')
                 });
         });
     }

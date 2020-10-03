@@ -10,14 +10,19 @@ module.exports = {
         
             rules_channel.send({ embed: new Discord.MessageEmbed() // create rules embed
                 .setColor('#0099ff')
-                .setTitle('XRP Discord')
-                .setURL('https://discord.js.org/')
-                .setDescription('Some description here')
+                .setTitle('Beat Battle Rules')
+                .setDescription('Rules for the Discord')
                 .setThumbnail('https://i.imgur.com/wSTFkRM.png')
                 .addFields(
-                    { name: 'Rules', value: '1. first rule\n 2. second rule' },
+                    { 
+                        name: 'Be Kind', 
+                        value: "Don't be rude to people. Some of us are experienced, while some are just getting started, and there is room for all in this community." 
+                    },
+                    { 
+                        name: 'Stay on Topic', 
+                        value: "Keep content on topic. This is a Discord for beat making and music talk, and it should be used accordingly." 
+                    },
                 )
-                .addField('Inline field title', 'Some value here', true)
                 .setFooter('React with ✅ to agree to the rules', 'https://i.imgur.com/wSTFkRM.png')
                 });
         });
