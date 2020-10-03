@@ -52,7 +52,7 @@ bot.on('message', message => {  // check for commands being run
         bot.commands.get('ping').execute(message, args);
     }
     if (command === 'startbattle'){
-        bot.commands.get('startbattle').execute(battle_channel_id, sample_channel_id, message, args);
+        bot.commands.get('startbattle').execute(bot, battle_channel_id, sample_channel_id, message, args);
     }
 });
 
