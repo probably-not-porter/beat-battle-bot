@@ -16,13 +16,11 @@ const token = process.env.DISCORD_TOKEN;
 // -------------------- BOT CONFIGURATION -------------------- // 
 const filter_words = ["heck", "shoot", "darn"];
 // channels
-const rules_channel_id = '740382874225737779'; // channel for ONLY rules agreement
-const admin_channel_id = '742832716923535480'; // admin only channel
+const rules_channel_id = '762006773959491607'; // channel for ONLY rules agreement
+const help_channel_id = '762007808307757056'; // channel for help info
 
 // roles
-const user_role_id = '740383032560844873'; // role for basic user
-const mod_role_id; // role for moderator
-const admin_role_id; // role for administrator
+const user_role_id = '762033142504095774'; // role for basic user
 bot.commands = new Discord.Collection();
 
 
@@ -33,7 +31,7 @@ for (const file of functionFiles){
     bot.commands.set(command.name, command);
 }
 bot.commands.get('rules-agreement').execute(bot, rules_channel_id, user_role_id); // start rules agreement, check for agrees
-bot.commands.get('text-filter').execute(bot, filter_words); // check for filter words
+bot.commands.get('help-text').execute(bot, help_channel_id); // print help info
 
 
 // -------------------- EXTERNAL COMMANDS -------------------- // 
@@ -50,9 +48,6 @@ bot.on('message', message => {  // check for commands being run
 
     if (command === 'ping'){
         bot.commands.get('ping').execute(message, args);
-    }
-    if (command === 'ticket'){
-        bot.commands.get('ticket').execute(message, args, bot, admin_channel_id);
     }
 });
 
