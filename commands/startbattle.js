@@ -6,13 +6,19 @@ module.exports = {
     execute(bot, battle_channel_id, sample_channel_id, msg, args){
         const battle_channel = bot.channels.cache.get(battle_channel_id);
         if (msg.channel.id == sample_channel_id){
-            if (args.length > 1){
-                msg.author.send("You have attempted to start a beat battle, but you gave me more than one piece of information. Please refer to the rules for more help.");
+            if (args.length != 2){
+                msg.author.send("You have attempted to start a beat battle, but did something wrong. Please refer to the rules for more help.");
             }
             else{
                 console.log('STARTING BATTLE')
-                let sample_url = args[0];
-                battles.push(sample_url);
+                let sample_url = args[1];
+                let battle_name = args[0];
+
+                battles.push({
+                    url: sample_url,
+                    id: Date.now(),
+                    name: battle_name
+                });
 
                 msg.author.send("You have initiated a battle for ...");
 
