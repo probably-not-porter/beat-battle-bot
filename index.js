@@ -66,6 +66,20 @@ bot.on('message', message => {  // check for commands being run
     }
 });
 
+// -------------------- CHECK BATTLE TIMERS -------------------- // 
+setInterval(() => {
+    let currenttime = new Date(Date.now());
+    for (x in battles){
+        if (currenttime.getTime() > battles[x].voting.getTime() && battles[x].state == 0){
+            battles[x].state = 1; // update to voting state
+            bot.commands.get('voting').execute(); // run voting function
+        }
+        else if (currenttime.getTime() > battles[x].end.getTime() && battles[x].state == 1){
+            battles[x].state = 2; // update to ending state
+            bot.commands.get('endbattle').execute(); // run endbattle function
+        }
+    }
+}, 10000); // check every 10 seconds
 
 // -------------------- STARTUP BOT -------------------- // 
 bot.login(token);

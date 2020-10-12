@@ -5,7 +5,7 @@ var battle_id = 0;
 
 module.exports = {
     name: 'startbattle',
-    description: 'start a battle',
+    description: 'manage battles',
     execute(bot, battles, battle_channel_id, sample_channel_id, msg, args){
         const battle_channel = bot.channels.cache.get(battle_channel_id);
         if (msg.channel.id == sample_channel_id){
@@ -17,26 +17,27 @@ module.exports = {
                 let sample_url = args[1];
                 let battle_name = args[0];
                 battle_id++;
+
+                msg.author.send("You have successfully started battle with ID " + battle_id + ". Your battle will go to voting in 24 hours." );
                 battle = {
                     url: sample_url,
                     id: battle_id,
                     name: battle_name,
                     submissions: [],
                     message: null,
+                    //voting: new Date(Date.now() + 86400 * 1000),
+                    //end: new Date(Date.now() + 86400 * 1000 * 2),
+                    voting: new Date(Date.now() + 5000),
+                    end: new Date(Date.now() + 10000),
                     state: 0 // 0 = creating, 1 = voting, 2 = ended
                 };
-                setTimeout( function() {
-                    voting(battle_id);
-                }, 1000);
 
-                // 1000 * 60 * 60 * 24 (one day)
-
-                msg.author.send("You have initiated a battle for ...");
-
+                
+                //---------- CREATE MESSAGE FOR CREATION PERIOD -------------//
                 battle_channel.send({ embed: new Discord.MessageEmbed() // create rules embed
                     .setColor('#ee0000')
                     .setTitle("[CREATING] " + (battle.name || "unnamed battle") + " (ID: " + battle.id + ")")
-                    .setDescription('Battle ends at ' + new Date(Date.now() + 86400 * 1000).toLocaleString() + ", 24 hours from start")
+                    .setDescription('Voting starts at ' + new Date(Date.now() + 86400 * 1000).toLocaleString() + ", 24 hours from start")
                     .addFields(
                         { 
                             name: 'Battle Sample', 
@@ -53,7 +54,7 @@ module.exports = {
                     )
                 }).then(r => {
                     r.react('‼️');
-                    battle.message = r.id;
+                    battle.message = r;
                     battles.push(battle);
                     battle = null;
                 });
@@ -63,14 +64,5 @@ module.exports = {
             msg.author.send("You have attempted to start a battle from the wrong channel. Please refer to the rules for more help.");
         }
         msg.delete();
-    }
-}
-
-function voting(id){
-    console.log('battle ' + id + " ended.");
-    for (x in battles){
-        if (battles[x].id == id){
-            battles[x].state = 1; // switch to voting
-        }
     }
 }
