@@ -3,7 +3,7 @@ module.exports = {
     description: 'submit a link to a battle',
     execute(battles, msg, args){
         var mojis = [ // voting emojis
-            "😀","😁","😂","🤣","😎","😄","😆","🤑","😠","🌍","🎉","👍","💎"
+            '🍎', '🍐', '🍊', '🍋', '🍌', '🍉', '🍇', '🍓', '🍈', '🍒', '🍑', '🥭', '🍍', '🥥', '🥝'
         ];
         if (args.length != 2){
             msg.author.send("You have attempted to submit an entry to a beat battle, but did something wrong. Please refer to the rules for more help.");
@@ -20,6 +20,9 @@ module.exports = {
             }
             if (ind == null){
                 msg.author.send("You have attempted to submit an entry to a beat battle that does not exist, or has ended. Please refer to the rules for more help.");
+            }
+            else if (battles[ind].submissions.length == 15){
+                msg.author.send("This battle is full! Sorry about that!");
             }
             else{
                 battles[ind].submissions.push({
