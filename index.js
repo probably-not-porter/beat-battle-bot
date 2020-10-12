@@ -1,9 +1,10 @@
-// XBOT
+// BEAT BATTLE BOT
 // Porter L
 
 // JS REQUIREMENTS
 const Discord = require('discord.js');
 const fs = require('fs');
+const submitentry = require('./commands/submitentry');
 require('dotenv').config();
 
 const bot = new Discord.Client(); // Create discord bot
@@ -25,6 +26,8 @@ const battle_channel_id = '762006990728986646'; // channel for beat battles
 const user_role_id = '762033142504095774'; // role for basic user
 bot.commands = new Discord.Collection();
 
+
+var battles = [];
 
 // -------------------- EXTERNAL FUNCTIONS -------------------- // 
 const functionFiles = fs.readdirSync('./functions/').filter(file => file.endsWith('.js'));
@@ -52,7 +55,12 @@ bot.on('message', message => {  // check for commands being run
         bot.commands.get('ping').execute(message, args);
     }
     if (command === 'startbattle'){
-        bot.commands.get('startbattle').execute(bot, battle_channel_id, sample_channel_id, message, args);
+        //console.log(battles);
+        bot.commands.get('startbattle').execute(bot, battles, battle_channel_id, sample_channel_id, message, args);
+    }
+    if (command === 'submitentry'){
+        //console.log(battles);
+        bot.commands.get('submitentry').execute(battles, message, args);
     }
 });
 
