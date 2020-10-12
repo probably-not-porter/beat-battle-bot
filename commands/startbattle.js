@@ -22,10 +22,15 @@ module.exports = {
                     id: battle_id,
                     name: battle_name,
                     submissions: [],
-                    message: null
+                    message: null,
+                    state: 0 // 0 = creating, 1 = voting, 2 = ended
                 };
-                
-                
+                setTimeout( function() {
+                    voting(battle_id);
+                }, 1000);
+
+                // 1000 * 60 * 60 * 24 (one day)
+
                 msg.author.send("You have initiated a battle for ...");
 
                 battle_channel.send({ embed: new Discord.MessageEmbed() // create rules embed
@@ -58,5 +63,14 @@ module.exports = {
             msg.author.send("You have attempted to start a battle from the wrong channel. Please refer to the rules for more help.");
         }
         msg.delete();
+    }
+}
+
+function voting(id){
+    console.log('battle ' + id + " ended.");
+    for (x in battles){
+        if (battles[x].id == id){
+            battles[x].state = 1; // switch to voting
+        }
     }
 }

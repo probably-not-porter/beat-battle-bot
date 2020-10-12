@@ -55,12 +55,14 @@ bot.on('message', message => {  // check for commands being run
         bot.commands.get('ping').execute(message, args);
     }
     if (command === 'startbattle'){
-        //console.log(battles);
         bot.commands.get('startbattle').execute(bot, battles, battle_channel_id, sample_channel_id, message, args);
     }
     if (command === 'submitentry'){
-        //console.log(battles);
         bot.commands.get('submitentry').execute(battles, message, args);
+    }
+    if (command === 'show'){
+        message.delete()
+        console.log(battles);
     }
 });
 
