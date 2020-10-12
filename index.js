@@ -72,7 +72,7 @@ setInterval(() => {
     for (x in battles){
         if (currenttime.getTime() > battles[x].voting.getTime() && battles[x].state == 0){
             battles[x].state = 1; // update to voting state
-            bot.commands.get('voting').execute(); // run voting function
+            bot.commands.get('voting').execute(bot, battles[x], battle_channel_id); // run voting function
         }
         else if (currenttime.getTime() > battles[x].end.getTime() && battles[x].state == 1){
             battles[x].state = 2; // update to ending state

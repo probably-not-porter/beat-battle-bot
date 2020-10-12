@@ -1,7 +1,9 @@
+const Discord = require('discord.js');
+
 module.exports = {
     name: 'endbattle',
     description: 'end voting for a battle',
-    execute(msg, args){
-                
+    execute(){
+        console.log("ENDED")
     }
 }

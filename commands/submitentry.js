@@ -2,7 +2,9 @@ module.exports = {
     name: 'submitentry',
     description: 'submit a link to a battle',
     execute(battles, msg, args){
-        
+        var mojis = ["😀","😁","😂","🤣","😎","😄","😆","🤑","😠","🌍","🎉","👍","💎"];
+
+
         if (args.length != 2){
             msg.author.send("You have attempted to submit an entry to a beat battle, but did something wrong. Please refer to the rules for more help.");
         }
@@ -21,7 +23,10 @@ module.exports = {
             else{
                 battles[ind].submissions.push({
                     url: url,
-                    name: msg.author.id
+                    authorId: msg.author.id,
+                    authorName: msg.author.username,
+                    moji: mojis[Math.floor(Math.random()*mojis.length)]
+
                 });
                 msg.author.send("You have successfully submitted an entry to battle " + battles[ind].name + " (ID: " + battles[ind].id + ")");
             }
