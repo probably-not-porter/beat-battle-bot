@@ -4,7 +4,7 @@ module.exports = {
     description: 'print help info',
     execute(bot, help_channel_id){
         bot.on('ready', () => { // Print rules to rules channel
-            console.log('PRINT HELP');
+            console.info('-> PRINT HELP');
             const help_channel = bot.channels.cache.get(help_channel_id);
             help_channel.bulkDelete(3);
         

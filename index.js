@@ -68,6 +68,7 @@ bot.on('message', message => {  // check for commands being run
 
 // -------------------- CHECK BATTLE TIMERS -------------------- // 
 setInterval(() => {
+    console.info("-> CHECKING BATTLE TIMERS")
     let currenttime = new Date(Date.now());
     for (x in battles){
         if (currenttime.getTime() > battles[x].voting.getTime() && battles[x].state == 0){
@@ -76,7 +77,7 @@ setInterval(() => {
         }
         else if (currenttime.getTime() > battles[x].end.getTime() && battles[x].state == 1){
             battles[x].state = 2; // update to ending state
-            bot.commands.get('endbattle').execute(); // run endbattle function
+            bot.commands.get('endbattle').execute(bot, battles[x], battle_channel_id); // run endbattle function
         }
     }
 }, 10000); // check every 10 seconds

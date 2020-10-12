@@ -13,10 +13,10 @@ module.exports = {
                 msg.author.send("You have attempted to start a beat battle, but did something wrong. Please refer to the rules for more help.");
             }
             else{
-                console.log('STARTING BATTLE')
                 let sample_url = args[1];
                 let battle_name = args[0];
                 battle_id++;
+                console.info("-> START_BATTLE FOR ID " + battle_id);
 
                 msg.author.send("You have successfully started battle with ID " + battle_id + ". Your battle will go to voting in 24 hours." );
                 battle = {

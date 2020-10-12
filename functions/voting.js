@@ -4,7 +4,7 @@ module.exports = {
     name: 'voting',
     description: 'start voting for a battle',
     execute(bot, battle, battle_channel_id){
-        console.log("VOTING FOR ID " + battle.id);
+        console.info("-> VOTE_BATTLE FOR ID " + battle.id);
         const battle_channel = bot.channels.cache.get(battle_channel_id);
 
         // delete 'creating' message
@@ -13,7 +13,7 @@ module.exports = {
         var subs = [
             { 
                 name: 'BATTLE SUBMISSIONS', 
-                value: 'Listen and vote for your favorite!'
+                value: 'Listen to each and vote for your favorite!'
             },
         ]
         for (x in battle.submissions){
@@ -33,6 +33,9 @@ module.exports = {
             )
         }).then(r => {
             r.react('‼️');
+            for (x in battle.submissions){
+                r.react(battle.submissions[x].moji)
+            }
             battle.message = r;
             battle = null;
         });

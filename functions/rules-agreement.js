@@ -4,7 +4,7 @@ module.exports = {
     description: 'Create a permission modifying rules agreement in specific channel',
     execute(bot, rules_channel_id, user_role_id){
         bot.on('ready', () => { // Print rules to rules channel
-            console.log('PRINT RULES');
+            console.info('-> PRINT RULES');
             const rules_channel = bot.channels.cache.get(rules_channel_id);
             rules_channel.bulkDelete(3);
         
