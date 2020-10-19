@@ -5,6 +5,7 @@ module.exports = {
         var mojis = [ // voting emojis
             '🍎', '🍐', '🍊', '🍋', '🍌', '🍉', '🍇', '🍓', '🍈', '🍒', '🍑', '🥭', '🍍', '🥥', '🥝'
         ];
+
         if (args.length != 2){
             msg.author.send("You have attempted to submit an entry to a beat battle, but did something wrong. Please refer to the rules for more help.");
         }
@@ -18,8 +19,18 @@ module.exports = {
                     ind = x;
                 }
             }
+            var has_submitted = false; //check if user has already submitted to this battle
+            for (x in battles[ind].submissions){
+                if (battles[ind].submissions[x].authorName == msg.author.username){
+                    has_submitted = false;
+                }
+            }
+
             if (ind == null){
                 msg.author.send("You have attempted to submit an entry to a beat battle that does not exist, or has ended. Please refer to the rules for more help.");
+            }
+            else if (has_submitted == false){
+                msg.author.send("You have already submitted an entry to this battle! Please refer to the rules for more help.");
             }
             else if (battles[ind].submissions.length == 15){
                 msg.author.send("This battle is full! Sorry about that!");
