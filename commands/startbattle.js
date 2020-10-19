@@ -25,11 +25,12 @@ module.exports = {
                     name: battle_name,
                     submissions: [],
                     message: null,
-                    //voting: new Date(Date.now() + 86400 * 1000),
-                    //end: new Date(Date.now() + 86400 * 1000 * 2),
-                    voting: new Date(Date.now() + 20000),
-                    end: new Date(Date.now() + 40000),
-                    state: 0 // 0 = creating, 1 = voting, 2 = ended
+                    voting: new Date(Date.now() + 86400 * 1000),
+                    end: new Date(Date.now() + 86400 * 1000 * 2),
+                    //voting: new Date(Date.now() + 20000),
+                    //end: new Date(Date.now() + 40000),
+                    state: 0, // 0 = creating, 1 = voting, 2 = ended
+                    mojis = []
                 };
 
                 

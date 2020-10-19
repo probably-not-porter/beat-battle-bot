@@ -25,13 +25,20 @@ module.exports = {
                 msg.author.send("This battle is full! Sorry about that!");
             }
             else{
+                let moji = [Math.floor(Math.random()*mojis.length)];
+                while (battles[ind].mojis.includes(moji)){ // make sure moji is not already in use
+                    moji = mojis[Math.floor(Math.random()*mojis.length)];
+                }
+                    
                 battles[ind].submissions.push({
                     url: url,
                     authorId: msg.author.id,
                     authorName: msg.author.username,
-                    moji: mojis[Math.floor(Math.random()*mojis.length)],
+                    moji: moji,
                     votes: null
                 });
+
+                battles[ind].mojis.push(moji);
                 msg.author.send("You have successfully submitted an entry to battle " + battles[ind].name + " (ID: " + battles[ind].id + ")");
             }
 
