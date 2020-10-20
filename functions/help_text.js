@@ -15,7 +15,7 @@ module.exports = {
                 .setThumbnail('https://i.imgur.com/wSTFkRM.png')
                 .addFields(
                     { 
-                        name: 'Selecting Samples', 
+                        name: 'Starting Battles', 
                         value: 'Use the `samples` text channel to discuss and select samples.\n Use `!startbattle [url]` to start a beat battle with a specific sample.\n A battle will be started in the `battle` text channel where the sample can be found and entries can be submitted.' 
                     },
                     { 

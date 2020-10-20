@@ -1,3 +1,5 @@
+const isUrl = require("is-valid-http-url");
+
 module.exports = {
     name: 'submitentry',
     description: 'submit a link to a battle',
@@ -28,6 +30,9 @@ module.exports = {
 
             if (ind == null){
                 msg.author.send("You have attempted to submit an entry to a beat battle that does not exist, or has ended. Please refer to the rules for more help.");
+            }
+            else if (isUrl(url) == false) {
+                msg.author.send("You attempted to submit an entry to a battle, but I couldn't find a valid URL for your entry! Please refer to the rules for more help.");
             }
             else if (has_submitted == false){
                 msg.author.send("You have already submitted an entry to this battle! Please refer to the rules for more help.");

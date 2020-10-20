@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const isUrl = require("is-valid-http-url");
 
 var battle = null;
 var battle_id = 0;
@@ -11,6 +12,9 @@ module.exports = {
         if (msg.channel.id == sample_channel_id){
             if (args.length != 2){
                 msg.author.send("You have attempted to start a beat battle, but did something wrong. Please refer to the rules for more help.");
+            }
+            else if (isUrl(args[1]) == false){
+                msg.author.send("You attempted to start a battle, but I couldn't find a valid URL for your sample! Please refer to the rules for more help.");
             }
             else{
                 let sample_url = args[1];
