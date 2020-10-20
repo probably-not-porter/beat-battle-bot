@@ -22,6 +22,10 @@ module.exports = {
                         name: 'Stay on Topic', 
                         value: "Keep content on topic. This is a Discord for beat making and music talk, and it should be used accordingly." 
                     },
+                    {
+                        name: 'Be Original', 
+                        value: "Please submit your own, original material. " 
+                    }
                 )
                 .setFooter('React with ✅ to agree to the rules', 'https://i.imgur.com/wSTFkRM.png')
                 });

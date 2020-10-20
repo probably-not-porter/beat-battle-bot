@@ -20,11 +20,11 @@ module.exports = {
                     },
                     { 
                         name: 'Submitting Entries', 
-                        value: 'Use the `samples` text channel to discuss and select samples.\n Use `!startbattle [url]` to start a beat battle with a specific sample.\n A battle will be started in the `battle` text channel where the sample can be found and entries can be submitted.' 
+                        value: 'Use `!submitentry [battle ID] [url]` to submit an entry to a battle by its ID.' 
                     },
                     { 
                         name: 'Voting on beats', 
-                        value: 'Use the `samples` text channel to discuss and select samples.\n Use `!startbattle [url]` to start a beat battle with a specific sample.\n A battle will be started in the `battle` text channel where the sample can be found and entries can be submitted.' 
+                        value: 'Once voting begins for a round, you can listen to the submitted links and vote on your favorite using their respective emotes.' 
                     },
                 )
                 .setFooter('Have fun and jam on', 'https://i.imgur.com/wSTFkRM.png')
