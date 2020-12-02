@@ -16,11 +16,11 @@ module.exports = {
                 .addFields(
                     { 
                         name: 'Starting Battles', 
-                        value: 'Use the `samples` text channel to discuss and select samples.\n Use `!startbattle [url]` to start a beat battle with a specific sample.\n A battle will be started in the `battle` text channel where the sample can be found and entries can be submitted.' 
+                        value: 'Use the `samples` text channel to discuss and select samples.\n Use `!startbattle [url]` to start a beat battle with a specific sample.\n A battle will be started in the `battle` text channel where the sample can be found and entries can be submitted.\n(Dont use [] in your actual command)' 
                     },
                     { 
                         name: 'Submitting Entries', 
-                        value: 'Use `!submitentry [battle ID] [url]` to submit an entry to a battle by its ID.' 
+                        value: 'Use `!submitentry [battle ID] [url]` to submit an entry to a battle by its ID.\n(Dont use [] in your actual command)' 
                     },
                     { 
                         name: 'Voting on beats', 
